@@ -1,5 +1,6 @@
 // app.js
-const Vue = require('vue');
+const Vue =require('vue');
+const App = require('./app.vue');
 const {createRouter} = require('./router/index.js');
 module.exports = function createApp (context) {
   const router = createRouter();
@@ -8,7 +9,8 @@ module.exports = function createApp (context) {
     data: {
       url: context.url
     },
-    template: `<div>访问的 URL 是： {{ url }}</div>`
+    router,
+    render: h=>h(App)
   })
   return {app,router}
 }
